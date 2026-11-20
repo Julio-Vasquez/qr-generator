@@ -26,7 +26,7 @@
     "type": "git",
     "url": "git+https://github.com/Julio-Vasquez/qr-generator.git"
   },
-  "homepage": "https://qr-generator-no-account.netlify.app/",
+  "homepage": ["https://qr-generator-no-account.netlify.app/", "https://qr-generator-psi-topaz.vercel.app/"],
   "bugs": {
     "url": "https://github.com/Julio-Vasquez/qr-generator/issues"
   },
