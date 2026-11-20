@@ -1,5 +1,5 @@
 import type { ChangeEvent, CSSProperties, MouseEvent } from 'react'
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 
 import type { ColorPickerProps, Hsv } from '../../utils'
 
@@ -17,13 +17,17 @@ export default function ColorPicker({ label, value, onChange }: ColorPickerProps
   const ref = useRef<HTMLDivElement>(null)
   const labelId = useId()
 
-  const handleClose = useCallback(() => setOpen(false), [])
+  const [prevValue, setPrevValue] = useState(value)
+
+  const handleClose = () => setOpen(false)
   useDismiss(open, ref, handleClose)
 
-  // value changed from outside (preset / hex input): resync the picker
-  useEffect(() => {
+  // value changed from outside (preset / hex input): resync the picker while
+  // rendering instead of in an effect, so there is no extra render with stale hsv
+  if (value !== prevValue) {
+    setPrevValue(value)
     if (hsvToHex(hsv) !== value.toLowerCase()) setHsv(hexToHsv(value))
-  }, [value]) // eslint-disable-line react-hooks/exhaustive-deps
+  }
 
   const update = (next: Hsv) => {
     const hex = hsvToHex(next)
@@ -154,7 +158,7 @@ export default function ColorPicker({ label, value, onChange }: ColorPickerProps
               className="color-picker__accept"
               onClick={handleClose}
             >
-              Aceptar
+              Accept
             </button>
           </div>
         </div>

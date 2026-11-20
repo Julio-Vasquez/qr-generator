@@ -6,6 +6,7 @@ import type { ChangeEvent, SyntheticEvent } from 'react'
 import { DEFAULT_COLOR, isValidUrl } from './utils'
 import ColorPicker from './components/ColorPicker'
 import Footer from './components/Footer'
+import ThemeToggle from './components/ThemeToggle'
 
 import './App.css'
 
@@ -80,7 +81,7 @@ export default function App() {
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 15h-2v-2h2v2Zm0-4h-2V7h2v6Z" />
                 </svg>
-                Ingresá una URL válida, por ejemplo https://example.com
+                Enter a valid URL, for example https://example.com
               </span>
             )}
           </label>
@@ -89,7 +90,7 @@ export default function App() {
             <ColorPicker label="Color" value={color} onChange={setColor} />
 
             <label className="field grow">
-              <span>Logo (opcional)</span>
+              <span>Logo (optional)</span>
               <input
                 ref={logoInputRef}
                 type="file"
@@ -101,17 +102,17 @@ export default function App() {
         </form>
 
         <div className="preview">
-          <div ref={ref} className="qr">
+          <div ref={ref} className={isValid ? 'qr qr--filled' : 'qr'}>
             {isValid ? (
               <QRCodeCanvas {...configQR} />
             ) : (
-              <p className="empty">Tu QR aparece acá</p>
+              <p className="empty">Your QR appears here</p>
             )}
             {isValid && logo && (
               <button
                 type="button"
                 className="qr-remove"
-                aria-label="Quitar logo"
+                aria-label="Remove logo"
                 onClick={handleRemoveLogo}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -131,6 +132,7 @@ export default function App() {
       </section>
     </main>
     <Footer />
+    <ThemeToggle />
     </>
   )
 }

@@ -20,3 +20,5 @@ export interface PadProps {
   onStep: (dx: number, dy: number) => void
   children: ReactNode
 }
+
+export type Theme = 'light' | 'dark'

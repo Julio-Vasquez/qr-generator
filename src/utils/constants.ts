@@ -30,3 +30,7 @@ export const GITHUB_URL = 'https://github.com/Julio-Vasquez'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/jv96/'
 
 export const DEFAULT_COLOR = '#000000'
+
+export const THEME_KEY = 'theme'
+
+export const DEFAULT_THEME = 'light'

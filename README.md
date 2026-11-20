@@ -2,6 +2,8 @@
 
 Turn any URL into a QR code. Custom colors, optional logo, PNG download. No account needed.
 
+**Live:** https://qr-generator-no-account.netlify.app/
+
 Everything runs in the browser: there is no backend and nothing you type leaves your machine.
 
 ## Features

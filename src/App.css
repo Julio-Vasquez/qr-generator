@@ -15,6 +15,7 @@
   gap: 28px;
   padding: 28px;
   box-sizing: border-box;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: var(--shadow);
@@ -136,9 +137,9 @@
   width: 288px;
   height: 288px;
   max-width: 100%;
-  background: #fff;
   border: 1px dashed var(--border);
   border-radius: 12px;
+  transition: background 0.2s;
 
   canvas {
     max-width: 100%;
@@ -146,10 +147,15 @@
   }
 }
 
+.qr--filled {
+  background: #fff;
+  border-color: transparent;
+}
+
 .empty {
   padding: 0 24px;
   font-size: 14px;
-  color: #6b6375;
+  color: var(--text);
   text-align: center;
 }
 
@@ -158,7 +164,7 @@
   font-weight: 500;
   padding: 10px 22px;
   color: #fff;
-  background: var(--accent);
+  background: var(--accent-solid);
   border: 0;
   border-radius: 8px;
   cursor: pointer;
@@ -197,7 +203,7 @@
   height: 18px;
   padding: 0;
   color: #fff;
-  background: var(--accent);
+  background: var(--accent-solid);
   border: 2px solid #fff;
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
