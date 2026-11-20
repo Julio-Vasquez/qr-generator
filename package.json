@@ -1,0 +1,57 @@
+{
+  "name": "qr-generator",
+  "description": "Turn any URL into a QR code. Custom colors, optional logo, PNG download. No account needed.",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "react",
+    "typescript",
+    "vite",
+    "bun",
+    "qr-code",
+    "qr-generator",
+    "qrcode-react",
+    "custom-colors",
+    "logo",
+    "png-download",
+    "frontend"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "Julio Alfredo Vásquez Lievano",
+    "email": "jualvalitube@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julio-Vasquez/qr-generator.git"
+  },
+  "homepage": "https://github.com/Julio-Vasquez/qr-generator#readme",
+  "bugs": {
+    "url": "https://github.com/Julio-Vasquez/qr-generator/issues"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "packageManager": "bun@1.3.1",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "qrcode.react": "^4.2.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.90.0",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6"
+  }
+}

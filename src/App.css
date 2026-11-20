@@ -1,0 +1,226 @@
+.app {
+  --control-h: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 48px;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-h);
+
+  &.grow {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  input[type='url'] {
+    font: inherit;
+    font-weight: 400;
+    padding: 10px 12px;
+    color: var(--text-h);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-bg);
+    }
+    &[aria-invalid='true'] {
+      border-color: #e5484d;
+      box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.15);
+    }
+  }
+
+  input[type='file'] {
+    font: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text);
+
+    &::file-selector-button {
+      font: inherit;
+      height: var(--control-h);
+      box-sizing: border-box;
+      margin-right: 10px;
+      padding: 0 12px;
+      color: var(--accent);
+      background: var(--accent-bg);
+      border: 1px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    &::file-selector-button:hover {
+      border-color: var(--accent-border);
+    }
+  }
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--error);
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  border-radius: 8px;
+  animation: error-in 0.2s ease-out;
+
+  svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+}
+
+@keyframes error-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.qr {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 288px;
+  height: 288px;
+  max-width: 100%;
+  background: #fff;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+
+  canvas {
+    max-width: 100%;
+    height: auto !important;
+  }
+}
+
+.empty {
+  padding: 0 24px;
+  font-size: 14px;
+  color: #6b6375;
+  text-align: center;
+}
+
+.download {
+  font: inherit;
+  font-weight: 500;
+  padding: 10px 22px;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    opacity 0.2s,
+    filter 0.2s,
+    box-shadow 0.2s,
+    transform 0.1s;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.15);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* sits on the top-right corner of the 56px logo, which is centered in the QR */
+.qr-remove {
+  position: absolute;
+  top: calc(50% - 28px);
+  left: calc(50% + 28px);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  color: #fff;
+  background: var(--accent);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition:
+    filter 0.2s,
+    box-shadow 0.2s;
+
+  svg {
+    width: 10px;
+    height: 10px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  &:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}

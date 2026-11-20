@@ -1,0 +1,216 @@
+.field:has(> .color-picker) {
+  position: relative;
+}
+
+/* same height as the file input button in App.css (--control-h) */
+.color-picker {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--control-h);
+  padding: 0 12px;
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  code {
+    font-size: 13px;
+    color: inherit;
+    text-transform: uppercase;
+  }
+}
+
+.color-picker__swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.color-picker__popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 252px;
+  padding: 12px;
+  box-sizing: border-box;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.color-picker__area,
+.color-picker__hue {
+  position: relative;
+  border-radius: 8px;
+  cursor: crosshair;
+  touch-action: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.color-picker__area {
+  height: 140px;
+}
+
+.color-picker__area-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(to top, #000, transparent),
+    linear-gradient(to right, #fff, transparent),
+    hsl(var(--hue) 100% 50%);
+}
+
+.color-picker__hue {
+  height: 12px;
+  background: linear-gradient(
+    to right,
+    hsl(0 100% 50%),
+    hsl(60 100% 50%),
+    hsl(120 100% 50%),
+    hsl(180 100% 50%),
+    hsl(240 100% 50%),
+    hsl(300 100% 50%),
+    hsl(360 100% 50%)
+  );
+}
+
+.color-picker__thumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* hue slider: bigger than the track and filled with the current hue */
+.color-picker__thumb--hue {
+  width: 18px;
+  height: 18px;
+}
+
+.color-picker__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  gap: 8px;
+}
+
+.color-picker__preset {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 2px solid var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--border);
+  cursor: pointer;
+  transition: transform 0.1s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+  &[aria-pressed='true'] {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.color-picker__hex {
+  font: 13px var(--mono);
+  text-transform: uppercase;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+  &[aria-invalid='true'] {
+    border-color: #e5484d;
+  }
+}
+
+.color-picker__actions {
+  display: flex;
+  gap: 8px;
+
+  button {
+    flex: 1;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+      filter 0.2s,
+      box-shadow 0.2s,
+      border-color 0.2s,
+      transform 0.1s;
+
+    &:active {
+      transform: scale(0.98);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  }
+}
+
+.color-picker__accept {
+  color: #fff;
+  background: var(--accent);
+
+  &:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 0 3px var(--accent-bg);
+  }
+}
+
+.color-picker__reset {
+  color: var(--accent);
+  background: var(--accent-bg);
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+}
